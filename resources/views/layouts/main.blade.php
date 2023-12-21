@@ -21,38 +21,48 @@
 
 </head>
 
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="collapse navbar-collapse" id="navbar">
-            <a href="/" class="navbar-brand">
-                <img src="/img/hdcevents_logo.svg" alt="HDC Events">
-            </a>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a href="/" class="nav-link">Eventos</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/events/create" class="nav-link">Criar Eventos</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/" class="nav-link">Entrar</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/" class="nav-link">Cadastrar</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</header>
-
 <body onload="anoAtual()">
 
-    @yield('content')
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="collapse navbar-collapse" id="navbar">
+                <a href="/" class="navbar-brand">
+                    <img src="/img/hdcevents_logo.svg" alt="HDC Events">
+                </a>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">Eventos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/events/create" class="nav-link">Criar Eventos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">Entrar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">Cadastrar</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                @if (session('msg'))
+                    <p class="msg">{{ session('msg') }}</p>
+                @endif
+                @yield('content')
+            </div>
+        </div>
+    </main>
 
     <footer>
-        Events &copy; <label id="ano-atual"></label>
-    </footer>
 
+        <div>Events &copy; <label id="ano-atual"></label></div>
+
+    </footer>
 
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 
