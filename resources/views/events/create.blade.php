@@ -6,8 +6,10 @@
 
     <div id="event-create-container" class="col-md-6 offset-md-3"><br>
         <div class="d-flex justify-content-center"><h1>Crie o seu evento</h1></div>
-        <form action="/events" method="POST">
+        <form action="/events" method="POST" enctype="multipart/form-data">
+
             @csrf
+        
             <div class="form-group">
                 <label for="title">Evento:</label>
                 <input type="text" class="form-control" id="title" name="title" placeholder="Nome do evento">
@@ -27,6 +29,10 @@
                 <label for="title">Descrição:</label>
                 <textarea name="description" id="description" class="form-control" placeholder="O que vai acontecer no evento?"></textarea>
             </div>
+            <div class="form-group">
+                <label for="image">Imagem do Evento:</label>
+                <input type="file" id="image" name="image" class="from-control-file">
+              </div>
             <input type="submit" class="btn btn-primary" value="Criar Evento">
         </form>
     </div>
