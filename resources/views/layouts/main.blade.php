@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -15,10 +14,8 @@
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     <!-- CSS da aplicação -->
-
     <link rel="stylesheet" href="/css/style.css">
     <script src="/js/script.js"></script>
-
 </head>
 
 <body onload="anoAtual()">
@@ -36,17 +33,33 @@
                     <li class="nav-item">
                         <a href="/events/create" class="nav-link">Criar Eventos</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="/" class="nav-link">Entrar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/" class="nav-link">Cadastrar</a>
-                    </li>
+                    @auth
+                        <li class="nav-item">
+                            <a href="/dashboard" class="nav-link">Meus eventos</a>
+                        </li>
+                        <li class="nav-item">
+                            <form action="/logout" method="POST">
+                                @csrf
+                                <a href="/logout" class="nav-link"
+                                    onclick="event.preventDefault();
+                    this.closest('form').submit();">
+                                    Sair
+                                </a>
+                            </form>
+                        </li>
+                    @endauth
+                    @guest
+                        <li class="nav-item">
+                            <a href="/login" class="nav-link">Entrar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/register" class="nav-link">Cadastrar</a>
+                        </li>
+                    @endguest
                 </ul>
             </div>
         </nav>
     </header>
-    
     <main>
         <div class="container-fluid">
             <div class="row">
